@@ -1,24 +1,12 @@
 <?php
 
-/**
- * Step 1: Require the Slim Framework using Composer's autoloader
- *
- * If you are not using Composer, you need to load Slim Framework with your own
- * PSR-4 autoloader.
- */
 require_once '../include/DbHandler.php';
 require_once '../include/PassHash.php';
-require '../libs/vendor/autoload.php';
+require '.././libs/Slim/Slim.php';
 
-/**
- * Step 2: Instantiate a Slim application
- *
- * This example instantiates a Slim application using
- * its default settings. However, you will usually configure
- * your Slim application now by passing an associative array
- * of setting names and values into the application constructor.
- */
-$app = new Slim\App();
+\Slim\Slim::registerAutoloader();
+
+$app = new \Slim\Slim();
 
 // User id from db - Global Variable
 $user_id = NULL;
@@ -349,3 +337,4 @@ function echoRespnse($status_code, $response) {
 }
 
 $app->run();
+?>
